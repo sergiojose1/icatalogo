@@ -6,10 +6,9 @@ import { DetalhesComponent } from './shared/pages/detalhes/detalhes.component';
 
 const routes: Routes = [
   
-  {path: 'home', component: HomeComponent},
+  {path: '', component: HomeComponent},
   {path: 'listagem', component: ListagemComponent},
-  {path: 'detalhes', component: DetalhesComponent},
-  {path: '', redirectTo: '/home', pathMatch: 'full'},
+  {path: 'detalhes', component: DetalhesComponent}
 ];
 
 @NgModule({
