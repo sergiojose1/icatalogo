@@ -15,10 +15,16 @@ export class ListagemComponent implements OnInit {
   ngOnInit(): void {
     this.movieService.getMovies().subscribe({
       next: (data) => {
-        this.movies = data.search; // Armazena os filmes retornados pela API
+        console.log('Dados recebidos no componente:', data); // Log dos dados recebidos
+        if (data && data.results) {
+          this.movies = data.results; // Certifique-se de que "results" é o nome correto
+        } else {
+          this.movies = data.movies;
+        }
       },
       error: (err) => {
-        console.error('Erro ao buscar filmes:', err); // Mostra erros no console
+        console.error('Erro ao buscar filmes:', err); // Log de erro
+        this.errorMessage = 'Erro ao carregar filmes. Tente novamente mais tarde.';
       },
     });
   }

@@ -1,19 +1,16 @@
-<h1>Filmes Populares</h1>
-<div *ngFor="let movie of movies | reverse" appHighlight>
-    <h2>{{ movie.title }}</h2>
-    <p>Data de lançamento: {{ movie.release_date | dateFormat }}</p>
-    <a routerLink="/detalhes/{{ movie.id }}">Detalhes</a>
-</div>
-<h1>Lista de Filmes</h1>
+<div class="container">
+  <h1>Filmes Populares</h1>
 
 <div *ngIf="movies.length > 0; else loading">
-  <div *ngFor="let movie of movies">
+  <div *ngFor="let movie of movies | reverse" appHighlight>
     <h2>{{ movie.title }}</h2>
-    <p>Lançamento: {{ movie.release_date }}</p>
+    <p>Lançamento: {{ movie.release_date | dateFormat }}</p>
     <a routerLink="/detalhes/{{ movie.id }}">Ver Detalhes</a>
   </div>
 </div>
 
 <ng-template #loading>
-  <p>Carregando filmes...</p>
+  <p *ngIf="!errorMessage">Carregando filmes...</p>
+  <p *ngIf="errorMessage">{{ errorMessage }}</p>
 </ng-template>
+</div>

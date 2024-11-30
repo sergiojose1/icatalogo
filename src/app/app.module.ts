@@ -14,13 +14,6 @@ import { ReversePipe } from './shared/pipes/reverse.pipe';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
-const routes: Routes = [
-  
-  {path: 'home', component: HomeComponent},
-  {path: 'listagem', component: ListagemComponent},
-  {path: 'detalhes', component: DetalhesComponent},
-  {path: '', redirectTo: '/home', pathMatch: 'full'},
-];
 
 
 @NgModule({

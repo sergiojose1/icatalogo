@@ -1,0 +1,22 @@
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 1em;
+  }
+  
+  div {
+    margin-bottom: 1.5em;
+  }
+  
+  a {
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+  }
