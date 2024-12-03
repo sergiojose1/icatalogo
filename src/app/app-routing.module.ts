@@ -8,7 +8,7 @@ const routes: Routes = [
   
   {path: '', component: HomeComponent},
   {path: 'listagem', component: ListagemComponent},
-  {path: 'detalhes', component: DetalhesComponent}
+  {path: 'detalhes/:id', component: DetalhesComponent}
 ];
 
 @NgModule({

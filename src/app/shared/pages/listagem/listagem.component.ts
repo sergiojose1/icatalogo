@@ -31,6 +31,7 @@ export class ListagemComponent implements OnInit {
     });
   }
   verDetalhes(movieId: number): void {
+    console.log('ID do filme para detalhes:', movieId);
     this.router.navigate(['/detalhes', movieId]);
   }
 }

@@ -22,6 +22,7 @@ export class DetalhesComponent {
     if(movieId) {
       this.MovieService.getMovieDetails(movieId).subscribe(
         (data) => {
+          console.log("dados retornados pela api:", data);
           this.movie = data;
           this.isLoading = false;
         },
