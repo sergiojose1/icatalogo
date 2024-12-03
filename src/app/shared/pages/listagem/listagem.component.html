@@ -2,11 +2,18 @@
 <div class="container">
   <h1>Filmes Populares</h1>
 
-<div *ngIf="movies.length > 0; else loading">
-  <div *ngFor="let movie of movies | reverse" appHighlight>
-    <h2>{{ movie.title }}</h2>
-    <p>Lançamento: {{ movie.release_date | dateFormat }}</p>
-    <button (click)="verDetalhes(movie.id)">ver mais detalhes</button>
+<div class="movie-grid" *ngIf="movies.length > 0; else loading">
+  <div class="movie-card" *ngFor="let movie of movies | reverse" appHighlight>
+    <img
+        [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"
+        alt="{{ movie.title }}"
+        class="movie-poster"
+      />
+      <div class="movie-info">
+      <h2>{{ movie.title }}</h2>
+      <p>Lançamento: {{ movie.release_date | dateFormat }}</p>
+      <button (click)="verDetalhes(movie.id)" class="details-btn">ver mais detalhes</button>
+    </div>
   </div>
 </div>
 
