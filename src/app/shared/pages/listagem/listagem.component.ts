@@ -1,5 +1,6 @@
 import { MovieService } from './../../services/movie.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-listagem',
@@ -9,8 +10,9 @@ import { Component, OnInit } from '@angular/core';
 export class ListagemComponent implements OnInit {
   movies: any[] = []; // Armazena a lista de filmes
   errorMessage: string= '';
+  isLoading: boolean = true;
 
-  constructor(private movieService: MovieService) {}
+  constructor(private movieService: MovieService, private router: Router) {}
 
   ngOnInit(): void {
     this.movieService.getMovies().subscribe({
@@ -27,5 +29,8 @@ export class ListagemComponent implements OnInit {
         this.errorMessage = 'Erro ao carregar filmes. Tente novamente mais tarde.';
       },
     });
+  }
+  verDetalhes(movieId: number): void {
+    this.router.navigate(['/detalhes', movieId]);
   }
 }

@@ -1,3 +1,4 @@
+
 <div class="container">
   <h1>Filmes Populares</h1>
 
@@ -5,7 +6,7 @@
   <div *ngFor="let movie of movies | reverse" appHighlight>
     <h2>{{ movie.title }}</h2>
     <p>Lançamento: {{ movie.release_date | dateFormat }}</p>
-    <a routerLink="/detalhes/{{ movie.id }}">Ver Detalhes</a>
+    <a routerLink="/Detalhes{{ movie.id }}">Ver Detalhes</a>
   </div>
 </div>
 

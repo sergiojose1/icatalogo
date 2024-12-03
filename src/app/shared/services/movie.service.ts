@@ -7,11 +7,20 @@ import { Observable } from 'rxjs';
 })
 export class MovieService {
 
-  private apiUrl = 'http://www.omdbapi.com/?i=tt3896198&apikey=9e433c11'
+  private apiUrl = 'https://api.themoviedb.org/3/movie/popular?api_key=586d0ba2aee5be1fa10f872b649701e2&language=pt-BR'
+  private apiKey = '586d0ba2aee5be1fa10f872b649701e2';
 
   constructor(private http: HttpClient) {}
 
   getMovies(): Observable<any> {
-    return this.http.get<any>(this.apiUrl);
+    return this.http.get<any>(
+    `${this.apiUrl}/movie/popular?api_key=${this.apiKey}&language=pt-BR`
+    );
+  }
+  
+  getMovieDetails(movieId: string): Observable<any> {
+    return this.http.get<any>(
+      `${this.apiUrl}/movie/${movieId}?api_key=${this.apiKey}&language=pt-BR`
+    );
   }
 }

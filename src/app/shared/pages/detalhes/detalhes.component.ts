@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { MovieService } from '../../services/movie.service';
 
 @Component({
   selector: 'app-detalhes',
@@ -7,13 +8,29 @@ import { ActivatedRoute } from '@angular/router';
   styleUrl: './detalhes.component.css'
 })
 export class DetalhesComponent {
+  movie: any;
+  isLoading: boolean = true;
 
-  movieId!: string;
-
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private MovieService: MovieService
+  ) {}
 
   ngOnInit(): void {
-    this.movieId = this.route.snapshot.paramMap.get('id')!;
+    const movieId = this.route.snapshot.paramMap.get('id');
+
+    if(movieId) {
+      this.MovieService.getMovieDetails(movieId).subscribe(
+        (data) => {
+          this.movie = data;
+          this.isLoading = false;
+        },
+        (error) => {
+          console.error('erro ao carregar os detalhes do filme', error);
+          this.isLoading = false;
+        }
+      );
+    }
   }
 
 }
